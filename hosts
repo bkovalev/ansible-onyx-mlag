@@ -1,0 +1,15 @@
+#  ansible 'hosts' file.
+
+[MLAG]
+spine1 ansible_host=l-csi-2100-tmp-08
+spine2 ansible_host=l-csi-2100-16
+leaf1 ansible_host=l-csi-2100-tmp-11
+leaf2 ansible_host=l-csi-2100-tmp-24
+
+[MLAG:vars]
+ansible_network_os=onyx
+ansible_become=yes
+ansible_become_method=enable
+ansible_ssh_user=admin
+ansible_ssh_pass=admin
+

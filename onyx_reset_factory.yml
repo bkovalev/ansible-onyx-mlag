@@ -1,0 +1,17 @@
+---
+- name: mlag
+  hosts: MLAG
+  gather_facts: no
+  connection: network_cli
+  become: yes
+  become_method: enable
+  vars:
+    ansible_network_os: onyx
+    reset: factory
+    pause_after_reset: 4
+    pause_value: 4
+    wait_for_protocol_port: 22
+  roles:
+    - { role: onyx_reset_factory, tags: ['reset_factory'] }
+    - { role: pause, pause_value: 4, tags: ['pause_1']}
+    - { role: onyx_fix_configuration_wizard, tags: ['fix_config_wizard']}
